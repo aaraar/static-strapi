@@ -1,3 +1,5 @@
+# This is a demo project to test out the capabilities of the [Strapi CMS](https://strapi.io/)
+
 # Elder.js Template Project
 
 <img src="https://img.shields.io/badge/dynamic/json?color=brightgreen&label=Node&query=engines.node&url=https%3A%2F%2Fraw.githubusercontent.com%2Felderjs%2Ftemplate%2Fmaster%2Fpackage.json" alt="node version" />
