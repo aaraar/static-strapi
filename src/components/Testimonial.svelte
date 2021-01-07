@@ -5,7 +5,7 @@
 <div class="page-component testimonial">
   <div class="testimonial__image-container">
     <div class="testimonial__image">
-      <img src={cms + image.url} alt={image.alternativeText}>
+      <img src={image.url} alt={image.alternativeText}>
     </div>
   </div>
   <section>

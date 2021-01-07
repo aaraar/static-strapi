@@ -4,7 +4,7 @@
 
 <div class="page-component hero">
   <div class="hero__image">
-    <img src={cms + image.url} alt={image.alternativeText}>
+    <img src={image.url} alt={image.alternativeText}>
   </div>
   <section>
     <h1>{title}</h1>
