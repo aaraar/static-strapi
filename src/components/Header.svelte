@@ -1,44 +1,29 @@
 <script>
-  export let title, subtitle, cta, image, cms;
+  export let title;
 </script>
 
-<div class="page-component hero">
-  <div class="hero__image">
-    <img src={image.url} alt={image.alternativeText}>
-  </div>
-  <section>
-    <h1>{title}</h1>
-    <p>{subtitle}</p>
-    <a href={cta.url}>{cta.text}</a>
-  </section>
-</div>
+<header>
+  <a href="/">🏠</a>
+  <h1>{title}</h1>
+  <div></div>
+</header>
 
-<style>
-  .hero {
-    position: relative;
-  }
-  .hero__image {
-    filter: blur(2px) saturate(50%);
-  }
-  img {
-    width: 100%;
-    border-radius: 50px;
 
-    object-fit: cover;
-  }
-  h1, p, a {
-    color: white;
-    width: 80%;
-  }
-  section {
+<style lang="scss">
+  header {
+    position: fixed;
     display: flex;
-    flex-direction: column;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 54px;
+    padding: 0 32px;
+    align-items: center;
+    z-index: 1;
+    background-color: var(--background-color-alpha);
+    h1 {
+      font-size: 2rem;
+    }
   }
 </style>

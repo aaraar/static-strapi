@@ -2,7 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const fs = require('fs-extra');
 require('dotenv').config();
-const { getJWT } = require('./queries/strapi-graphql');
+const { getFooter } = require('./queries/strapi-graphql');
 
 /**
  * Hooks!
@@ -91,7 +91,7 @@ const hooks = [
       return {
         data: {
           ...data,
-          cms: process.env.ENDPOINT,
+          cms: process.env.NODE_ENV === 'development' ? process.env.ENDPOINT : null,
           // here we are using the 'os' node.js native, and passing in data on the number of CPUs
 
           // NOTE: here we are polluting the global data object across all 'requests' because we are using the 'bootstrap' hook.
@@ -105,15 +105,14 @@ const hooks = [
   },
   {
     hook: 'bootstrap',
-    name: 'getJWT',
+    name: 'setJWT',
     description: 'Get the JSON webtoken for the graphql API',
     priority: 50,
-    run: async ({ helpers }) => {
-      const jwt = await getJWT();
+    run: ({ helpers }) => {
       return {
         helpers: {
           ...helpers,
-          jwt,
+          jwt: process.env.JWT,
           // here we are using the 'os' node.js native, and passing in data on the number of CPUs
 
           // NOTE: here we are polluting the global data object across all 'requests' because we are using the 'bootstrap' hook.
@@ -125,6 +124,28 @@ const hooks = [
       };
     },
   },
+  {
+    hook: 'bootstrap',
+    name: 'getFooter',
+    description: 'Get the Footer from CMS',
+    priority: 50,
+    run: async ({ data }) => {
+      const footer = await getFooter();
+      return {
+        data: {
+          ...data,
+          footer,
+          // here we are using the 'os' node.js native, and passing in data on the number of CPUs
+
+          // NOTE: here we are polluting the global data object across all 'requests' because we are using the 'bootstrap' hook.
+          // This is bad practice in this example because cpus is only used by Home.svelte, but it is illustrated to show how you could
+          // add global data.
+
+          // IMPORTANT: If you want to add data to a specific route only, you should probably do it in your /route.js for that route.
+        },
+      };
+    },
+  }
 
   // If you'd like to see specific examples of how to do things that you think could help improve the template please create a GH issue.
 ];

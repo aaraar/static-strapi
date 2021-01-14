@@ -1,0 +1,17 @@
+{
+  "name": "Strapi GraphQL Schema",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "http://localhost:1337/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        "introspect": true
+      }
+    }
+  }
+}

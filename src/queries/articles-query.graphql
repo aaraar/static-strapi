@@ -1,0 +1,20 @@
+query {
+  articles {
+    id
+    title
+    body
+    slug
+    excerpt
+    authors: users_permissions_users {
+      id
+      title: username
+      email
+      articles {
+        id
+        title
+        slug
+        body: excerpt
+      }
+    }
+  }
+}

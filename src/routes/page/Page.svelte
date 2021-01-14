@@ -1,24 +1,22 @@
 <script>
+  import Footer from '../../components/Footer.svelte';
+  import DynamicComponents from '../../components/DynamicComponents.svelte';
   import Header from '../../components/Header.svelte';
-  import Testimonial from '../../components/Testimonial.svelte';
+  import LatestArticles from '../../components/organisms/LatestArticles.svelte';
 
   export let data;
 </script>
 
-<div class="page-components">
-  <h1>{data.Title}</h1>
-  {#each data.components as component}
-    {#if component.__typename === 'ComponentPageComponentHeader'}
-      <Header class="page-component" title={component.title} subtitle={component.subtitle} cta={component.link} image={component.image} cms={data.cms}/>
-    {/if}
-    {#if component.__typename === 'ComponentPageComponentTestimonial'}
-      <Testimonial class="page-component" title={component.title} body={component.body} image={component.avatar} cms={data.cms}/>
-    {/if}
-  {/each}
-</div>
+<Header title={data.title} />
+<main>
+  <div class="page-components">
+    {#each data.components as component}
+      {#if component.__typename === 'ComponentOrganismsLatestArticles'}
 
-<style global>
-  .page-component {
-    margin-bottom: 30px;
-  }
-</style>
+        <LatestArticles articles={data.articles.map(author => ({ ...author, endpoint: 'article' }))} />
+      {/if}
+      <DynamicComponents component={component} endpoint={data.cms} categories={data.categories} cases={data.cases}/>
+    {/each}
+  </div>
+</main>
+<Footer lists={data.footer.lists} contact={data.footer.contact} copyright={data.footer.copyright}/>

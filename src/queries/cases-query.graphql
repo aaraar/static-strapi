@@ -1,0 +1,78 @@
+query {
+  cases {
+    id
+    title
+    slug
+    subtitle
+    preview {
+      url
+    }
+    categories {
+      id
+      title
+      cases {
+        id
+        title
+      }
+    }
+    info {
+      id
+      title
+      body
+      list {
+        items {
+          id
+          title
+          text
+        }
+      }
+    }
+    body {
+      __typename
+      ...on ComponentOrganismsCards {
+        id
+        items {
+          id
+          title
+          body
+          image {
+            id
+            url
+          }
+        }
+      }
+      ...on ComponentOrganismsInfoCard {
+        id
+        title
+        body
+        list {
+          id
+          items {
+            id
+            title
+            text
+          }
+        }
+      }
+      ...on ComponentOrganismsParagraph {
+        id
+        title
+        body
+        media {
+          alternativeText
+          url
+          mime
+          width
+          height
+        }
+      }
+      ...on ComponentOrganismsImageBanner {
+        id
+        title
+        image {
+          url
+        }
+      }
+    }
+  }
+}

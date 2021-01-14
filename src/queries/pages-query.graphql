@@ -1,0 +1,101 @@
+query {
+  pages {
+    id
+    title
+    slug
+    components {
+      __typename
+      ...on ComponentOrganismsHero {
+        id
+        title
+        title
+        body
+        call_to_action {
+          link {
+            href
+            body
+          }
+        }
+        background_image {
+          id
+          url
+          alternativeText
+        }
+      }
+      ...on ComponentOrganismsCards {
+        id
+        items {
+          id
+          title
+          body
+          image {
+            id
+            url
+          }
+        }
+      }
+      ...on ComponentOrganismsInfoCard {
+        id
+        title
+        body
+        list {
+          id
+          items {
+            id
+            title
+            text
+          }
+        }
+      }
+      ...on ComponentOrganismsParagraph {
+        title
+        body
+        media {
+          alternativeText
+          url
+          mime
+          width
+          height
+        }
+      }
+      ...on ComponentOrganismsImageBanner {
+        id
+        title
+        image {
+          url
+        }
+      }
+      ...on ComponentOrganismsCaseSelection {
+        id
+        title
+        cases {
+          id
+          title
+          subtitle
+          slug
+          categories {
+            id
+            title
+          }
+          info {
+            id
+            title
+            body
+            list {
+              id
+              items {
+                id
+                title
+                text
+              }
+            }
+          }
+        }
+      }
+      ...on ComponentOrganismsLatestArticles {
+        id
+        title
+      }
+    }
+  }
+}

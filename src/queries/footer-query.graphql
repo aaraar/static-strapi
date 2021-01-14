@@ -1,0 +1,14 @@
+query {
+  footer {
+    lists {
+      id
+      items {
+        id
+        title
+        text
+      }
+    }
+    contact
+    copyright
+  }
+}

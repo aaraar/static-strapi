@@ -31,6 +31,7 @@
     "glob": "^7.1.6",
     "intersection-observer": "^0.11.0",
     "node-fetch": "^2.6.1",
+    "node-sass": "^5.0.0",
     "polka": "^0.5.2",
     "sirv": "^1.0.5",
     "svelte": "3.29.0",
